@@ -9,3 +9,6 @@ pyvenv.cfg
 
 venv
 __pycache__
+
+# ignore model file
+model.pkl
