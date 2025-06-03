@@ -8,8 +8,11 @@ from jaqpot_api_client.models.prediction_response import PredictionResponse
 from src.loggers.logger import logger
 from src.loggers.log_middleware import LogMiddleware
 from src.model import ModelService
+from src.hgpr import HeteroscedasticGPR
+
 
 model_service: ModelService = None
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -18,8 +21,10 @@ async def lifespan(app: FastAPI):
     model_service = ModelService()
     yield
 
+
 app = FastAPI(title="ML Model API", lifespan=lifespan)
 app.add_middleware(LogMiddleware)
+
 
 @app.post("/infer", response_model=PredictionResponse)
 def infer(req: PredictionRequest) -> PredictionResponse:
@@ -32,8 +37,8 @@ def infer(req: PredictionRequest) -> PredictionResponse:
 
 @app.get("/health")
 def health_check():
-    return {"status": "OK"}
+    return {"status": "ok"}
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8002, log_config=None)
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_config=None)

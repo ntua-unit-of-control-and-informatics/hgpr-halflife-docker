@@ -20,7 +20,7 @@ class JsonFormatter(Formatter):
 
 logger: RootLogger = logging.root
 handler = logging.StreamHandler()
-handler.setFormatter(JsonFormatter())
+# handler.setFormatter(JsonFormatter())
 logger.handlers = [handler]
 logger.setLevel(logging.INFO)
 
