@@ -9,6 +9,6 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./main.py /code/
 
-EXPOSE 8002
+EXPOSE 8000
 
-CMD ["python", "-m", "main", "--port", "8002"]
+CMD ["python", "-m", "main", "--port", "8000"]
