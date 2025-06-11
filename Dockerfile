@@ -8,6 +8,7 @@ COPY ./src /code/src
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./main.py /code/
+COPY ./hgpr_model.pkl /code/
 
 EXPOSE 8000
 
